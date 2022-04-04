@@ -8,12 +8,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+    <header class="w-full bg-indigo-900">
+        <div class="p-3 pt-4">
+            <h1 class="text-center text-xl font-extrabold text-white">Weather Dashboard</h1>
+        </div>
+    </header>
     <div class="container mx-auto">
         <div class="flex flex-row flex-wrap py-4">
-            <aside class="w-full sm:w-1/3 md:w-1/4 px-2 bg-slate-100 rounded">
+            <aside class="w-full sm:w-1/3 md:w-1/4 px-2 bg-indigo-100 rounded">
                 <div class="sticky top-0 p-4 w-full">
                     <!-- navigation -->
-                    <ul class="flex flex-col overflow-hidden flex">
+                    <ul class="flex flex-col space-y-4 overflow-hidden justify-between">
                         <div id="city" class="p-2 flex">
                             <button type="button" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded flex-auto">Toronto</button>
                         </div>                
@@ -34,21 +39,36 @@
             </aside>
             <main role="main" class="w-full sm:w-2/3 md:w-3/4 px-2">
                 <!-- content area -->
-                <div class="container bg-indigo-500 p-5 rounded">
-                    <div id="current-weather-info">
-                        <h3 id="current-location" class="text-lg font-bold">Atlanta<span class="px-2">(3/30/2021)</span><span class="px-2">☁️</span></h3>
+                <!-- current city and its current weather -->
+                <div class="p-4">
+                    <div class="container bg-indigo-50 p-5 rounded">
+                        <div id="current-weather-info">
+                            <h3 id="current-location" class="text-lg font-bold">Atlanta<span class="px-2">(3/30/2021)</span><span class="px-2">☁️</span></h3>
+                        </div>
+                        <div class="mt-3" id="temperature">
+                            <p class="font-medium">Temp:<span class="px-2 font-semibold">74.01ºF</span></p>
+                        </div>
+                        <div id="wind">
+                            <p class="font-medium">Wind:<span class="px-2 font-semibold">6.67 MPH</span></p>
+                        </div>
+                        <div id="humidity">
+                            <p class="font-medium">Humidity:<span class="px-2 font-semibold">46%</span></p>
+                        </div>
+                        <div id="temperature">
+                            <p class="font-medium">UV Index:<span class="px-2 font-semibold">0.47</span></p>
+                        </div>
                     </div>
-                    <div class="mt-3" id="temperature">
-                        <p class="font-medium">Temp:<span class="px-2 font-semibold">74.01ºF</span></p>
-                    </div>
-                    <div id="wind">
-                        <p class="font-medium">Wind:<span class="px-2 font-semibold">6.67 MPH</span></p>
-                    </div>
-                    <div id="humidity">
-                        <p class="font-medium">Humidity:<span class="px-2 font-semibold">46%</span></p>
-                    </div>
-                    <div id="temperature">
-                        <p class="font-medium">UV Index:<span class="px-2 font-semibold">0.47</span></p>
+                </div>
+                <!-- forecast row -->
+                <div class="p-4">
+                    <div class="container bg-indigo-50 p-5 rounded">
+                        <div>
+                            <div id="current-weather-info items-center">
+                                <h3 id="current-location" class="fs-5 fw-bold items-center p-5">5-Day Forecast:</h3>
+                            </div>
+                            <div id="forecast-row" class="d-flex flex-wrap p-5">                            
+                            </div>                        
+                        </div>
                     </div>
                 </div>
             </main>
