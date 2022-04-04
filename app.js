@@ -1,13 +1,12 @@
-var currentWeather = document.getElementById('current-weather');
-var forecastRow = document.getElementById('forecast-row');
-var forecastLength = 5;
 const apiKey = "85b2f1bdec6377177c781dc904257b09";
+let apiURL;
+let cityName = "Toronto";
+let forecastLength = 5;
+
+var currentWeather = document.getElementById('current-weather');
 var cityInput = document.getElementById('city-input');
 var searchBtn = document.getElementById('search');
-let cityName = "Toronto";
-
-
-let apiURL;
+var button = document.getElementById('city');
 
 const city = {
     'toronto': {
@@ -51,6 +50,7 @@ var getWeather = (city) => {
         if (response.ok && city) {
             response.json().then((data) => {
                 console.log('Request is OK')
+                console.log(data)
                 displayWeather(data)
             });
         }
@@ -62,13 +62,16 @@ var getWeather = (city) => {
 };
 
 var displayWeather = (list) => {
-    // console.log(list);
+    console.log(list);
     for (var i = 0; i < forecastLength; i++) {
         var temperature = list.list[i].main.temp;
         var wind = list.list[i].wind.speed;
         var humidity = list.list[i].main.humidity;
         var forecastDate = list.list[i].dt_txt;
         // var uv_index = list[i].main.humidity;
+
+        var forecastRowEl = document.createElement('div');
+        forecastRowEl.classList = 'grid grid-cols-5 gap-2';
 
         // create forecast card div
         var forecastCardEl = document.createElement("div");
@@ -93,6 +96,7 @@ var displayWeather = (list) => {
         tempSpanEl.setAttribute('id', "temp-data");
         tempSpanEl.classList = "px-2 font-bold";
         tempSpanEl.textContent = temperature + "ºC";
+        tempTextEl.appendChild(tempSpanEl);
         forecastCardDivEl.appendChild(tempTextEl);
 
         // create wind element to hold wind data
@@ -104,6 +108,7 @@ var displayWeather = (list) => {
         windSpanEl.setAttribute('id', "wind-data");
         windSpanEl.classList = "px-2 font-bold";
         windSpanEl.textContent = wind + " km/h";
+        windTextEl.appendChild(windSpanEl);
         forecastCardDivEl.appendChild(windTextEl);
 
         // create humidity element to hold humidity data
@@ -115,14 +120,14 @@ var displayWeather = (list) => {
         humiditySpanEl.setAttribute('id', "humidity-data");
         humiditySpanEl.classList = "px-2 font-bold";
         humiditySpanEl.textContent = humidity;
+        humidityTextEl.appendChild(humiditySpanEl);
         forecastCardDivEl.appendChild(humidityTextEl);
 
         // append inner html elements to forecast wrapper
         forecastCardEl.appendChild(forecastCardDivEl);
-        forecastWrapperEL.appendChild(forecastCardEl);
+        forecastRowEl.appendChild(forecastCardEl);
     }
 };
-var cityBtn = document.getElementById('#city', 'button');
 
 
 var getCity = (cityName) => {
@@ -137,6 +142,9 @@ var getCity = (cityName) => {
 };
 
 // searchBtn.addEventListener('click', getCity);
-(() => {
-    getWeather("Toronto");
-});
+window.document.onload() = () => {
+    getWeather(cityName);
+    button.addEventListener('click', 'button', () => {
+        console.log(button.textContent);
+    });
+}
