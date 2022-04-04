@@ -18,7 +18,10 @@
             <aside class="w-full sm:w-1/3 md:w-1/4 px-2 bg-indigo-100 rounded">
                 <div class="sticky top-0 p-4 w-full">
                     <!-- navigation -->
-                    <ul class="flex flex-col space-y-4 overflow-hidden justify-between">
+                    <!-- search -->
+                    
+                    <!-- cities -->
+                    <ul id="cities" class="flex flex-col overflow-hidden justify-between">
                         <div id="city" class="p-2 flex">
                             <button type="button" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded flex-auto">Toronto</button>
                         </div>                
@@ -45,17 +48,17 @@
                         <div id="current-weather-info">
                             <h3 id="current-location" class="text-lg font-bold">Atlanta<span class="px-2">(3/30/2021)</span><span class="px-2">☁️</span></h3>
                         </div>
-                        <div class="mt-3" id="temperature">
-                            <p class="font-medium">Temp:<span class="px-2 font-semibold">74.01ºF</span></p>
+                        <div class="mt-3">
+                            <p id="current-temp" class="font-medium">Temp:<span class="px-2 font-semibold">74.01ºF</span></p>
                         </div>
-                        <div id="wind">
-                            <p class="font-medium">Wind:<span class="px-2 font-semibold">6.67 MPH</span></p>
+                        <div>
+                            <p id="current-wind"class="font-medium">Wind:<span class="px-2 font-semibold">6.67 MPH</span></p>
                         </div>
-                        <div id="humidity">
-                            <p class="font-medium">Humidity:<span class="px-2 font-semibold">46%</span></p>
+                        <div>
+                            <p id="current-humidity" class="font-medium">Humidity:<span class="px-2 font-semibold">46%</span></p>
                         </div>
-                        <div id="temperature">
-                            <p class="font-medium">UV Index:<span class="px-2 font-semibold">0.47</span></p>
+                        <div>
+                            <p id="current-uv" class="font-medium">UV Index:<span class="px-2 font-semibold">0.47</span></p>
                         </div>
                     </div>
                 </div>
@@ -67,87 +70,22 @@
                         </div>
                         <div>
                             <div id="forecast-row" class="grid grid-cols-5 gap-2">                                                                                                                         
-                                <div id="day" class="container flex-col">
+                                <div id="forecast-card" class="container flex-col">
                                     <div class="bg-indigo-400 rounded">
                                         <div class="p-2 flex-row">
-                                            <p id="date" class="font-bold">10/34/2021</p>
+                                            <p id="forecast-date" class="font-bold">10/34/2021</p>
                                         </div>
                                         <div class="p-2 flex-row">
-                                            <p id="temp" class="font-semibold flex justify-between">Temp:<span class="px-2 font-bold">24ºF</span></p>
+                                            <p id="temp" class="font-semibold flex justify-between">Temp:<span id="temp-data" class="px-2 font-bold">24ºF</span></p>
                                         </div>
                                         <div class="p-2 flex-row">
-                                            <p id="temp" class="font-semibold flex justify-between">Wind:<span class="px-2 font-bold">42 km</span></p>
+                                            <p id="wind" class="font-semibold flex justify-between">Wind:<span id="wind-data" class="px-2 font-bold">42 km</span></p>
                                         </div>
                                         <div class="p-2">
-                                            <p id="temp" class="font-semibold flex justify-between">Humidity:<span class="px-2 font-bold">64%</span></p>
+                                            <p id="humidity" class="font-semibold flex justify-between">Humidity:<span id="humidity-data" class="px-2 font-bold">64%</span></p>
                                         </div>
                                     </div>
-                                </div>                                
-                                <div id="day" class="container flex-col">
-                                    <div class="bg-indigo-400 rounded">
-                                        <div class="p-2 flex-row">
-                                            <p id="date" class="font-bold">10/34/2021</p>
-                                        </div>
-                                        <div class="p-2 flex-row">
-                                            <p id="temp" class="font-semibold flex justify-between">Temp:<span class="px-2 font-bold">24ºF</span></p>
-                                        </div>
-                                        <div class="p-2 flex-row">
-                                            <p id="temp" class="font-semibold flex justify-between">Wind:<span class="px-2 font-bold">42 km</span></p>
-                                        </div>
-                                        <div class="p-2">
-                                            <p id="temp" class="font-semibold flex justify-between">Humidity:<span class="px-2 font-bold">64%</span></p>
-                                        </div>
-                                    </div>
-                                </div>                                
-                                <div id="day" class="container flex-col">
-                                    <div class="bg-indigo-400 rounded">
-                                        <div class="p-2 flex-row">
-                                            <p id="date" class="font-bold">10/34/2021</p>
-                                        </div>
-                                        <div class="p-2 flex-row">
-                                            <p id="temp" class="font-semibold flex justify-between">Temp:<span class="px-2 font-bold">24ºF</span></p>
-                                        </div>
-                                        <div class="p-2 flex-row">
-                                            <p id="temp" class="font-semibold flex justify-between">Wind:<span class="px-2 font-bold">42 km</span></p>
-                                        </div>
-                                        <div class="p-2">
-                                            <p id="temp" class="font-semibold flex justify-between">Humidity:<span class="px-2 font-bold">64%</span></p>
-                                        </div>
-                                    </div>
-                                </div>                                
-                                <div id="day" class="container flex-col">
-                                    <div class="bg-indigo-400 rounded">
-                                        <div class="p-2 flex-row">
-                                            <p id="date" class="font-bold">10/34/2021</p>
-                                        </div>
-                                        <div class="p-2 flex-row">
-                                            <p id="temp" class="font-semibold flex justify-between">Temp:<span class="px-2 font-bold">24ºF</span></p>
-                                        </div>
-                                        <div class="p-2 flex-row">
-                                            <p id="temp" class="font-semibold flex justify-between">Wind:<span class="px-2 font-bold">42 km</span></p>
-                                        </div>
-                                        <div class="p-2">
-                                            <p id="temp" class="font-semibold flex justify-between">Humidity:<span class="px-2 font-bold">64%</span></p>
-                                        </div>
-                                    </div>
-                                </div>                                
-                                <div id="day" class="container flex-col">
-                                    <div class="bg-indigo-400 rounded">
-                                        <div class="p-2 flex-row">
-                                            <p id="date" class="font-bold">10/34/2021</p>
-                                        </div>
-                                        <div class="p-2 flex-row">
-                                            <p id="temp" class="font-semibold flex justify-between">Temp:<span class="px-2 font-bold">24ºF</span></p>
-                                        </div>
-                                        <div class="p-2 flex-row">
-                                            <p id="temp" class="font-semibold flex justify-between">Wind:<span class="px-2 font-bold">42 km</span></p>
-                                        </div>
-                                        <div class="p-2">
-                                            <p id="temp" class="font-semibold flex justify-between">Humidity:<span class="px-2 font-bold">64%</span></p>
-                                        </div>
-                                    </div>
-                                </div>                                
-                                                             
+                                </div>                                                                                 
                             </div>                        
                         </div>
                     </div>

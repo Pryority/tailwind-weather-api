@@ -70,63 +70,55 @@ var displayWeather = (list) => {
         var forecastDate = list.list[i].dt_txt;
         // var uv_index = list[i].main.humidity;
 
-        // create forecast card wrapper div
-        var forecastWrapperEL = document.createElement("div");
-        forecastWrapperEL.setAttribute('id', "forecast-card-wrapper");
-        forecastWrapperEL.classList = "p-1";
-        forecastRow.appendChild(forecastWrapperEL);
-
         // create forecast card div
         var forecastCardEl = document.createElement("div");
-        forecastWrapperEL.setAttribute('id', "forecast-card");
-        forecastCardEl.classList = "col bg-indigo-350 p-3 rounded";
+        forecastCardEl.setAttribute('id', "forecast-card");
+        forecastCardEl.classList = "container flex-col";
+
+        var forecastCardDivEl = document.createElement('div');
+        forecastCardDivEl.classList = 'bg-indigo-400 rounded';
 
         var forecastDateTextEl = document.createElement('p');
         forecastDateTextEl.setAttribute('id', 'forecast-date');
-        forecastDateTextEl.classList = "text-semibold flex flex-wrap";
+        forecastDateTextEl.classList = "font-bold";
         forecastDateTextEl.textContent = forecastDate;
-        var forecastDateSpanEl = document.createElement('span');
-        forecastDateSpanEl.classList = "mx-2 flex flex-wrap";
-        forecastDateTextEl.appendChild(forecastDateSpanEl);
-        forecastCardEl.appendChild(forecastDateTextEl);
+        forecastCardDivEl.appendChild(forecastDateTextEl);
 
         // create temperature element to hold temp data
         var tempTextEl = document.createElement('p');
-        tempTextEl.setAttribute('id', "temperature");
-        tempTextEl.classList = "text-semibold flex flex-wrap";
+        tempTextEl.setAttribute('id', "temp");
+        tempTextEl.classList = "font-semibold flex justify-between";
         tempTextEl.textContent = "Temp:";
         var tempSpanEl = document.createElement('span');
         tempSpanEl.setAttribute('id', "temp-data");
-        tempSpanEl.classList = "mx-2 flex flex-wrap";
+        tempSpanEl.classList = "px-2 font-bold";
         tempSpanEl.textContent = temperature + "ºC";
-        tempTextEl.appendChild(tempSpanEl);
-        forecastCardEl.appendChild(tempTextEl);
+        forecastCardDivEl.appendChild(tempTextEl);
 
         // create wind element to hold wind data
         var windTextEl = document.createElement('p');
         windTextEl.setAttribute('id', "wind");
-        windTextEl.classList = "text-semibold";
+        windTextEl.classList = "font-semibold flex justify-between";
         windTextEl.textContent = "Wind:"
         var windSpanEl = document.createElement('span');
         windSpanEl.setAttribute('id', "wind-data");
-        windSpanEl.classList = "mx-2 flex flex-wrap";
+        windSpanEl.classList = "px-2 font-bold";
         windSpanEl.textContent = wind + " km/h";
-        windTextEl.appendChild(windSpanEl);
-        forecastCardEl.appendChild(windTextEl);
+        forecastCardDivEl.appendChild(windTextEl);
 
         // create humidity element to hold humidity data
         var humidityTextEl = document.createElement('p');
         humidityTextEl.setAttribute('id', "humidity");
-        humidityTextEl.classList = "text-semibold";
+        humidityTextEl.classList = "font-semibold flex justify-between";
         humidityTextEl.textContent = "Humidity:"
         var humiditySpanEl = document.createElement('span');
         humiditySpanEl.setAttribute('id', "humidity-data");
-        humiditySpanEl.classList = "mx-2 flex flex-wrap";
+        humiditySpanEl.classList = "px-2 font-bold";
         humiditySpanEl.textContent = humidity;
-        humidityTextEl.appendChild(humiditySpanEl);
-        forecastCardEl.appendChild(humidityTextEl);
+        forecastCardDivEl.appendChild(humidityTextEl);
 
         // append inner html elements to forecast wrapper
+        forecastCardEl.appendChild(forecastCardDivEl);
         forecastWrapperEL.appendChild(forecastCardEl);
     }
 };
