@@ -142,9 +142,9 @@ var getCity = (cityName) => {
 };
 
 // searchBtn.addEventListener('click', getCity);
-window.document.onload() = () => {
-    getWeather(cityName);
-    button.addEventListener('click', 'button', () => {
-        console.log(button.textContent);
-    });
-}
+
+getWeather(cityName);
+button.addEventListener('click', 'button', () => {
+    console.log(button.textContent);
+});
+
