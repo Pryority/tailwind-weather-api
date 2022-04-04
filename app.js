@@ -1,12 +1,18 @@
 const apiKey = "85b2f1bdec6377177c781dc904257b09";
 let apiURL;
-let cityName = "Toronto";
+let cityName = "Tokyo";
 let forecastLength = 5;
+let lat = 44;
+let long = -81;
 
-var currentWeather = document.getElementById('current-weather');
+var currentLocation = $('#current-location');
+var currentTemp = $('#current-temp');
+var currentWind = $('#current-wind');
+var currentHumidity = $('#current-humidity');
+
 var cityInput = document.getElementById('city-input');
 var searchBtn = document.getElementById('search');
-var button = document.getElementById('city');
+var button = $('#city');
 
 const city = {
     'toronto': {
@@ -42,7 +48,9 @@ const city = {
 }
 
 var getWeather = (city) => {
-    apiURL = "https://api.openweathermap.org/data/2.5/forecast?lat=43.6532&lon=-79.382&units=metric&appid=85b2f1bdec6377177c781dc904257b09";
+    apiURL = "https://api.openweathermap.org/data/2.5/forecast?lat="
+        + lat + "&lon="
+        + long + "&units=metric&appid=85b2f1bdec6377177c781dc904257b09";
 
     // make a get request to url
     fetch(apiURL).then((response) => {
@@ -61,14 +69,18 @@ var getWeather = (city) => {
     });
 };
 
-var displayWeather = (list) => {
-    console.log(list);
+var displayWeather = (forecast) => {
     for (var i = 0; i < forecastLength; i++) {
-        var temperature = list.list[i].main.temp;
-        var wind = list.list[i].wind.speed;
-        var humidity = list.list[i].main.humidity;
-        var forecastDate = list.list[i].dt_txt;
+        var temperature = forecast.list[i].main.temp;
+        var wind = forecast.list[i].wind.speed;
+        var humidity = forecast.list[i].main.humidity;
+        var forecastDate = forecast.list[i].dt_txt;
         // var uv_index = list[i].main.humidity;
+
+        currentLocation.textContent = forecast.city.name;
+        currentTemp.textContent = forecast.list[0].main.temp;
+        currentWind.textContent = forecast.list[0].wind.speed;
+        currentHumidity.textContent = forecast.list[0].main.humidity;
 
         var forecastRowEl = document.createElement('div');
         forecastRowEl.classList = 'grid grid-cols-5 gap-2';
@@ -144,7 +156,7 @@ var getCity = (cityName) => {
 // searchBtn.addEventListener('click', getCity);
 
 getWeather(cityName);
-button.addEventListener('click', 'button', () => {
-    console.log(button.textContent);
-});
+// button.on('click', button, () => {
+//     console.log(button.textContent);
+// });
 
